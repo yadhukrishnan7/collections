@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{font-family:'Open Sans', sans-serif;box-sizing:border-box;font-weight:normal;color:#2d2d2d}body{padding:0;margin:0}a{text-decoration:none}h4{font-size:14px;font-weight:600}h4 a{font-size:14px;font-weight:600}h1,h2,h3,h4,h5{margin:0;margin-bottom:5px}p{font-size:14px;line-height:22px;font-weight:400;margin:0}strong,b{font-size:14px;font-weight:600}.relative{position:relative}.w-100{width:100%}.template-container{padding:12px}.template-container .row.gap-5{column-gap:5px}.template-container .row.gap-8{column-gap:10px}.template-container .row.gap-10{column-gap:10px}.template-container .row.gap-15{column-gap:15px}.template-container .flex{display:flex}.template-container .flex.f-col{flex-direction:column}.template-container .flex.f-row{flex-direction:row}.template-container .flex.scroll{overflow-x:auto}.template-container .flex.scroll::-webkit-scrollbar{display:none}.template-container .flex.scroll .scroll-card{min-width:70vw;width:70vw;margin-right:15px}.radius{border-radius:10px;overflow:hidden}.card{margin-bottom:8px}.card.text-center{text-align:center}.image-widget{margin-bottom:10px}.card-list{margin-bottom:18px;padding:16px;border-radius:12px;background-color:#004e95}.card-list .image-widget .badge-label{border-radius:6px;position:absolute;bottom:12px;left:6px;z-index:1;color:#2d2d2d;font-size:12px;font-weight:700;padding:4px 16px;background-color:#faa519}.card-list .image-widget img{border-radius:6px}.card-list h4{margin-bottom:14px;position:relative}.card-list h4::after{content:"";position:absolute;left:0;bottom:-6px;width:70px;height:2px;background:#faa519}.card-list h4 a{font-size:16px;color:#fafafa}.card-list .content p{color:#ffffff;opacity:.7;font-size:13px}.no-img{width:100%;height:200px;background-color:#9b9b9b;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1.5rem;color:#1f1f1f;font-weight:700}
+    </style>
+</head>
+<body>
+<div class="template-container">
+    <div id="fedCardData"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    // fetch API
+    fetch('http://localhost:3000/fedapi')
+    .then(response => response.json())
+    .then(data => {
+        const mainContainer = document.getElementById("fedCardData");
+        for (var i = 0; i < data?.length; i++) {
+            const div = document.createElement("div");
+            div.classList.add('row','flex','f-col','card-list');
+            div.innerHTML = '<div class="relative image-widget">'+
+            '<a class="item-link" style="display: block" target="_blank" href='+data[i].redirectUrl+'>' +
+            `${ data[i].img !== "" ? '<img class="w-100" src='+ data[i].img +' alt="" />' : '<div class="no-img">No Image.</div>' }` + ' </a>' + 
+            '<div class="badge-label">'+ data[i].department+'</div>'+
+            '</div>'+
+            '<h4><a style="display: inline-block;" target="_blank" href='+data[i].redirectUrl+'>'+ data[i].title +'</a></h4>'+
+            '<div class="content"><p>'+ data[i].content+'</p></div>';
+            mainContainer.appendChild(div);
+        }
+    });
+</script>
+</body>
+</html>

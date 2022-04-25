@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "AIzaSyDYgr8-ZPjolXdUXb__8AxogDyrgRaP9f8",
+            authDomain: "soy-serenity-195209.firebaseapp.com",
+            projectId: "soy-serenity-195209",
+            storageBucket: "soy-serenity-195209.appspot.com",
+            messagingSenderId: "512161074465",
+            appId: "1:512161074465:web:32a5ea4597af1125248260",
+            measurementId: "G-VN2V0M7QJJ"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const dbRef = firebase.database().ref();
+        
+        dbRef.child("data").get().then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log("snapshot.val()", snapshot.val());
+        } else {
+            console.log("No data available");
+        }
+        }).catch((error) => {
+            console.error(error);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="template-container">
+    <div id="fedCardData"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    // $.ajax({
+    //     type: 'GET',
+    //     dataType:"jsonp",
+    //     url: 'http://localhost:3000/businessinfo',
+    //     success: function (data, status, xhr) {
+    //         var mainContainer = document.getElementById("fedCardData");
+    //         for (var i = 0; i < data.length; i++) {
+    //             var div = document.createElement("div");
+    //             div.classList.add('row','flex','f-col','card-list');
+    //             div.innerHTML = '<div class="relative image-widget">'+
+    //                 '<a style="display: block" target="_blank" href='+data[i].redirectUrl+'>'+
+    //                 '<img class="w-100" src='+data[i].img +' alt=""></a>'+
+    //                 '<div class="badge-label">'+ data[i].department+'</div>'+
+    //                 '</div>'+
+    //                 '<h4><a style="display: inline-block;" target="_blank" href='+data[i].redirectUrl+'>'+ data[i].title +'</a></h4>'+
+    //                 '<div class="content"><p>'+ data[i].content+'</p></div>';
+    //             mainContainer.appendChild(div);
+    //         }
+    //     }
+    // });
+    // const noImage = "Ho"
+    // fetch('http://localhost:3000/businessinfo')
+    // .then(response => response.json())
+    // .then(data => {
+    //     const mainContainer = document.getElementById("fedCardData");
+    //     for (var i = 0; i < data?.length; i++) {
+    //         console.log(typeof data[i].img);
+    //         var div = document.createElement("div");
+    //         div.classList.add('row','flex','f-col','card-list');
+    //         div.innerHTML = '<div class="relative image-widget">'+
+    //             '<a style="display: block" target="_blank" href='+data[i].redirectUrl+'>'+
+    //             data[i].img !== null ?'<img class="w-100" src='+ data[i].img +' alt=""></a>' : '<div>'+ noImage +'</div>' + 
+    //             '<div class="badge-label">'+ data[i].department+'</div>'+
+    //             '</div>'+
+    //             '<h4><a style="display: inline-block;" target="_blank" href='+data[i].redirectUrl+'>'+ data[i].title +'</a></h4>'+
+    //             '<div class="content"><p>'+ data[i].content+'</p></div>';
+    //         mainContainer.appendChild(div);
+    //     }
+    // });
+</script>
+</body>
+</html>
